@@ -20,9 +20,6 @@
             //should display current balance
             Balance = ViewBalance(Balance);
 
-            // Prompt the user to withdraw from the balance and update the balance accordingly
-            /*Balance = Withdraw(Balance);
-            Deposit(Balance);*/
 
             for (int i = 0; i < 4; i++)
             {
@@ -83,7 +80,7 @@
             }
         }
 
-
+        // Method to withdraw from the balance
         public static decimal ViewBalance(decimal Balance)
         {
             Console.WriteLine("You have $" + Balance + " in your bank.");
@@ -91,13 +88,15 @@
 
 
         }
-
+        // Method to withdraw from the balance
         public static decimal Withdraw(decimal Balance, decimal withdraw)
         {
             Balance -= withdraw;
 
             return Balance;
         }
+
+        // Method to deposit into the balance
         public static decimal Deposit(decimal Balance, decimal deposit)
         {
             
@@ -106,12 +105,16 @@
             return Balance;
         }
 
+        // Testing method for withdrawal 
+        // This method serves as a testing method for withdrawing. It calculates the new balance after withdrawing the specific amount.
         public static decimal WithdrawTest(decimal withdrawalAmount, decimal decimalBalance)
         {
             decimal newBalance = Withdraw(withdrawalAmount, decimalBalance);
             return newBalance;
         }
 
+        //testing method for depositing
+        // This method serves as a testing method for depositing. It calculates the new balance after depositing the specified amount.
         public static decimal DepositTest( decimal decimalBalance, decimal depositAmount)
         {
             decimal newBalance = Deposit(depositAmount, decimalBalance);
@@ -119,6 +122,8 @@
 
         }
 
+        //test method for viewing the balance
+        // the method serves as a wrapper for the ViewBalance method, passing the balance parameter and returning the result.
         public static decimal ViewBalanceTest(decimal balance)
         {
             return ViewBalance(balance);
