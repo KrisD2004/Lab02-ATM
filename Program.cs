@@ -17,21 +17,25 @@
 
         static void UserInterface()
         {
-            //should display current balance
+            //should display current balance when you first run it
             Balance = ViewBalance(Balance);
 
 
-            for (int i = 0; i < 4; i++)
+            bool exit = false;
+            while (!exit)
             {
                 Console.WriteLine("Press V to view balance");
                 Console.WriteLine("Press W to withdraw");
                 Console.WriteLine("Press D to deposit");
                 Console.WriteLine("Press E to Exit Bank");
                 string input = Console.ReadLine();
+
+                //view balance
                 if (input == "V" || input == "v")
                 {
-                    Balance = ViewBalance(Balance);
+                    Balance = ViewBalance(Balance); //calls my method to view the current balance
                 }
+                // making withdrawal
                 else if (input == "W" || input == "w")
                 {
                     if (Balance != 0)
@@ -44,7 +48,7 @@
                         }
                         else
                         {
-                    Balance = Withdraw(Balance, withdraw);
+                            Balance = Withdraw(Balance, withdraw); // Calls a method to perform a withdrawal
                             Console.WriteLine("You now have $" + Balance);
                         }
 
@@ -54,6 +58,8 @@
                         Console.WriteLine("Insufficent funds cant withdraw ");
                     }
                 }
+
+                // Make Deposit
                 else if (input == "D" || input == "d")
                 {
                     Console.WriteLine("How much you would want to Deposit? ");
@@ -61,21 +67,16 @@
 
                     if (deposit > 0)
                     {
-                    Balance = Deposit(Balance, deposit);
+                        Balance = Deposit(Balance, deposit); // Calls a method to perform a deposit
                         Console.WriteLine("You now have $" + Balance + " in your bank account .");
                     }
                 }
+
+                // Exit Bank
                 else if (input == "E" || input == "e")
                 {
-                    return;                }
-                
-                
-
-                
-
-
-
-
+                    return;
+                }
 
             }
         }
@@ -99,9 +100,9 @@
         // Method to deposit into the balance
         public static decimal Deposit(decimal Balance, decimal deposit)
         {
-            
+
             Balance += deposit;
-               
+
             return Balance;
         }
 
@@ -115,7 +116,7 @@
 
         //testing method for depositing
         // This method serves as a testing method for depositing. It calculates the new balance after depositing the specified amount.
-        public static decimal DepositTest( decimal decimalBalance, decimal depositAmount)
+        public static decimal DepositTest(decimal decimalBalance, decimal depositAmount)
         {
             decimal newBalance = Deposit(depositAmount, decimalBalance);
             return newBalance;
